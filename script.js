@@ -4,6 +4,15 @@
 // x-amz-request-payer: RequestPayer
 // x-amz-expected-bucket-owner: ExpectedBucketOwner
 
+function updateImages(imageList) {
+	const div = document.getElementById("images");
+	for( let image of imageList ) {
+		const img = document.createElement("img");
+		img.src = "https://c1-study-group-images.s3.amazonaws.com/" + image;
+		div.appendChild( img );
+	}
+}
+
 async function getImagesFromS3() {
 	//const url = "https://s3.us-east-1.amazonaws.com/?list-type=2&encoding-type=url";
 	/* const headers = {
@@ -11,12 +20,14 @@ async function getImagesFromS3() {
 		"x-amz-request-payer": "775010165072",
 		"mode": 'no-cors'
 	} */
-	const url = "https://c1-study-group-images.s3.amazonaws.com?list-type=2&encoding-type=url";
-	const headers = {};
+	const url = "https://nvi418b58b.execute-api.us-east-1.amazonaws.com/dev";
+	const headers = {mode: 'cors'};
+	/* const headers = {mode: 'cors', headers: {
+		'Access-Control-Allow-Origin': '*'
+	}}; */
 	//const response = await fetch(url, {headers});
 	//console.log( response.json() );
 	fetch(url, headers)
-	.then(response => console.log(response) );
-  	//.then(response => response.json())
-  	//.then(result => console.log( result ) );
+  	.then(response => response.json())
+  	.then(result => updateImages( result ) );
 }
