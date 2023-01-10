@@ -8,7 +8,11 @@
 </head>
 <script src="script.js"></script>
 <body onload="getImagesFromS3()">
-    <h1>Welcome to C1 Study Group</h1>
+	<form >
+	Fie Upload <input type="file" id="fileName" name="file"/>
+	<button type="button" onclick="imageUpload()">Upload</button>
+	</form>
+	<h1>Welcome to C1 Study Group</h1>
     <div id="images"></div>
     <!-- <img src="https://c1-study-group-images.s3.amazonaws.com/capital-one-office.jpg" /><br />
     <img src="https://c1-study-group-images.s3.amazonaws.com/dallas%20slide.jpg" /> -->

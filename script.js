@@ -13,6 +13,24 @@ function updateImages(imageList) {
 	}
 }
 
+function imageUpload(){
+	
+	//event.preventDefault();
+	const url = "https://nvi418b58b.execute-api.us-east-1.amazonaws.com/dev/";
+	//const form = event.target;
+	const formData = new FormData();
+	let fileInput = document.getElementById('fileName');
+	formData.append('file', fileInput.files[0]);
+	
+	fetchOptions ={
+		method:'POST',
+		header
+		body: formData
+	};
+
+	fetch(url,fetchOptions);
+}
+
 async function getImagesFromS3() {
 	//const url = "https://s3.us-east-1.amazonaws.com/?list-type=2&encoding-type=url";
 	/* const headers = {
